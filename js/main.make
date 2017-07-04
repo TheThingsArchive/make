@@ -40,7 +40,7 @@ only_js = grep '\.js$$'
 
 ## install dev dependencies
 js.dev-deps:
-	@$(log) "fetching js tools"
+	$(log) "fetching js tools"
 	@command -v yarn > /dev/null || ($(log) Installing yarn && npm install -g yarn)
 	@$(log) Installing json && $(YARN) add json --dev $(YARN_FLAGS)
 	@$(log) Installing eslint && $(YARN) add eslint eslint-config-ttn --dev $(YARN_FLAGS)
@@ -57,19 +57,19 @@ js_init_script = \
 
 ## initialize repository
 js.init:
-	@$(log) "initializing js"
+	$(log) "initializing js"
 	@echo "$(js_init_script)" | node
 
 INIT_RULES += js.init
 
 ## install dependencies
 js.deps:
-	@$(log) "fetching js dependencies"
+	$(log) "fetching js dependencies"
 	@$(YARN) install $(YARN_FLAGS)
 
 ## clean build files
 js.clean:
-	@$(log) "cleaning js public dir" [rm -rf $(PUBLIC_DIR)]
+	$(log) "cleaning js public dir" [rm -rf $(PUBLIC_DIR)]
 	@rm -rf $(PUBLIC_DIR)
 
 # list js files

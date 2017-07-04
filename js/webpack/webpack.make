@@ -13,7 +13,7 @@ WEBPACK_FLAGS ?= --colors $(if $(CI),,--progress)
 
 ## Pre-build config files for quicker builds
 $(CACHE_DIR)/config/%.js: $(CONFIG_DIR)/%.js
-	@$(log) pre-building config files [babel $<]
+	$(log) pre-building config files [babel $<]
 	@mkdir -p $(CACHE_DIR)/config
 	@$(BABEL) $< >| $@
 
@@ -28,7 +28,7 @@ WEBPACK_CONFIG_BUILT = $(subst $(CONFIG_DIR)/,$(CACHE_DIR)/config/,$(WEBPACK_CON
 
 .SECONDEXPANSION:
 webpack.build: $$(WEBPACK_DEPS) $(WEBPACK_CONFIG_BUILT)
-	@$(log) "building client [webpack -c $(WEBPACK_CONFIG_BUILT) $(WEBPACK_FLAGS)]"
+	$(log) "building client [webpack -c $(WEBPACK_CONFIG_BUILT) $(WEBPACK_FLAGS)]"
 	@$(JS_ENV) $(WEBPACK) --config $(WEBPACK_CONFIG_BUILT) $(WEBPACK_FLAGS)
 
 # build in dev mode
@@ -47,14 +47,14 @@ DLL_CONFIG_BUILT = $(subst $(CONFIG_DIR),$(CACHE_DIR)/config,$(DLL_CONFIG))
 
 # DLL for faster dev builds
 $(DLL_OUTPUT): $(DLL_CONFIG_BUILT) package.json yarn.lock
-	@$(log) "building dll file"
+	$(log) "building dll file"
 	@GIT_TAG=$(GIT_TAG) DLL_FILE=$(DLL_OUTPUT) NODE_ENV=$(NODE_ENV) CACHE_DIR=$(CACHE_DIR) $(WEBPACK) --config $(DLL_CONFIG_BUILT) $(WEBPACK_FLAGS)
 
 # build dll for faster rebuilds
 webpack.dll: $(DLL_OUTPUT)
 
 webpack.dev-deps:
-	@$(log) "fetching webpack tools"
+	$(log) "fetching webpack tools"
 	@$(log) Installing webpack && $(YARN) add webpack --dev $(YARN_FLAGS)
 
 # vim: ft=make

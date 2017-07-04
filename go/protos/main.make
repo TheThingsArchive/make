@@ -34,7 +34,7 @@ protos: $(PROTO_TARGETS)
 
 # build a proto file
 %.pb.go: %.proto
-	@$(log) "compiling proto file $<"
+	$(log) "compiling proto file $<"
 	@$(PROTOC) $(PROTOC_FLAGS) $(PWD)/$<
 
 # remove compiled proto files
@@ -43,7 +43,7 @@ protos-clean:
 
 # fetch deps for protos
 protos-deps:
-	@$(log) "fetching proto tools"
+	$(log) "fetching proto tools"
 	@command -v protoc-gen-gofast > /dev/null || go get "github.com/gogo/protobuf/protoc-gen-gofast"
 	@command -v protoc-gen-grpc-gateway > /dev/null || go get "github.com/gogo/protobuf/protoc-gen-grpc-gateway"
 

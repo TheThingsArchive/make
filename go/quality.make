@@ -5,7 +5,7 @@
 
 ## fmt all packages
 go.fmt:
-	@$(log) "formatting `$(GO_PACKAGES) | $(count)` go packages"
+	$(log) "formatting `$(GO_PACKAGES) | $(count)` go packages"
 	@[[ -z "`$(GO_PACKAGES) | xargs go fmt | tee -a /dev/stderr`" ]]
 
 ## fmt stages packages
@@ -16,7 +16,7 @@ go.fmt-staged: go.fmt
 
 ## vet all packages
 go.vet:
-	@$(log) "vetting `$(GO_PACKAGES) | $(count)` go packages"
+	$(log) "vetting `$(GO_PACKAGES) | $(count)` go packages"
 	@$(GO_PACKAGES) | xargs $(GO) vet
 
 ## vet staged packages
@@ -27,7 +27,7 @@ go.vet-staged: go.vet
 ## lint all packages, exiting when errors occur
 GO_LINT_FILES = $(GO_FILES) | $(no_vendor) | $(no_mock) | $(no_pb)
 go.lint:
-	@$(log) "linting `$(GO_LINT_FILES) | $(count)` go files"
+	$(log) "linting `$(GO_LINT_FILES) | $(count)` go files"
 	@CODE=0; for pkg in `$(GO_LINT_FILES)`; do $(GOLINT) $(GOLINT_FLAGS) $$pkg 2>/dev/null || { CODE=1; }; done; exit $$CODE
 
 ## lint all packages, ignoring errors
