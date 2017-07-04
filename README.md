@@ -13,12 +13,12 @@ every project from reinventing the wheel.
 
 2. Edit your `Makefile` include the relevant rules for your project:
   ```
-  include ./make/*.make
+  include .make/*.make
 
-  include ./make/js/*.make          # when using js
-  include ./make/js/webpack/*.make  # when using webpack
-  include ./make/go/*.make          # when using go
-  include ./make/go/protos/*.make   # when using protobufs
+  include .make/js/*.make          # when using js
+  include .make/js/webpack/*.make  # when using webpack
+  include .make/go/*.make          # when using go
+  include .make/go/protos/*.make   # when using protobufs
   ```
 
 3. Alias some rules in your `Makefile`
