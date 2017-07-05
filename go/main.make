@@ -40,16 +40,16 @@ no_vendor = grep -v 'vendor'
 only_vendor = grep 'vendor'
 
 ## select/remove mock files
-no_mock = grep -v '_mock.go'
-only_mock = grep '_mock.go'
+no_mock = grep -v '_mock\.go'
+only_mock = grep '_mock\.go'
 
 ## select/remove protobuf generated files
-no_pb = grep -Ev '.pb.go$$|.pb.gw.go$$'
-only_pb = grep -E '.pb.go$$|.pb.gw.go$$'
+no_pb = grep -Ev '\.pb\.go$$|\.pb\.gw\.go$$'
+only_pb = grep -E '\.pb\.go$$|\.pb\.gw\.go$$'
 
 ## select/remove test files
-no_test = grep -v '_test.go$$'
-only_test = grep '_test.go$$'
+no_test = grep -v '_test\.go$$'
+only_test = grep '_test\.go$$'
 
 ## filter files to packages
 to_packages = sed 's:/[^/]*$$::' | sort | uniq

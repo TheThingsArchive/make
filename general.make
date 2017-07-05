@@ -5,7 +5,7 @@ SHELL = bash
 ## count the input
 count = wc -w
 
-GENERAL_FILE = echo $(MAKEFILE_LIST) | xargs -n 1 echo | grep general.make
+GENERAL_FILE = echo $(MAKEFILE_LIST) | xargs -n 1 echo | grep 'general\.make'
 MAKE_DIR = $(GENERAL_FILE) | xargs dirname
 
 # Init rules are the rules to invoke to initialize the repo

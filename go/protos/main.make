@@ -1,6 +1,6 @@
 
 # target only .proto files
-only_proto = grep ".proto$$"
+only_proto = grep "\.proto$$"
 
 # files to be considered for proto compilation
 PROTO_FILES ?= $(ALL_FILES) | $(only_proto)
