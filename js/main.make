@@ -53,7 +53,7 @@ js_init_script = \
 	pkg.babel = pkg.babel || { presets: [ 'ttn' ] }; \
 	pkg.eslintConfig = pkg.eslintConfig || { extends: 'ttn' }; \
 	pkg.jest = pkg.jest || { preset: 'jest-preset-ttn' }; \
-	fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+	fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
 
 ## initialize repository
 js.init:
