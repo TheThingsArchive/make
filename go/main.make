@@ -33,7 +33,7 @@ GO_COVER_DIR  = .coverage
 # Filters
 
 ## select only go files
-only_go = grep '.go$$'
+only_go = grep '\.go$$'
 
 ## select/remove vendored files
 no_vendor = grep -v 'vendor'
