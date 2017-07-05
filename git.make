@@ -18,7 +18,7 @@ STAGED_FILES = git diff --staged --name-only --diff-filter=d --relative=$$($(GIT
 
 # Install git hooks
 git.hooks:
-	$(log) "installing hooks"
+	$(log) "installing git hooks"
 	@touch .git/hooks/pre-commit
 	@chmod u+x .git/hooks/pre-commit
 	@grep pre-commit .git/hooks/pre-commit >/dev/null || echo "make pre-commit" >> .git/hooks/pre-commit
