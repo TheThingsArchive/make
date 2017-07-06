@@ -11,7 +11,7 @@ NODE_ENV ?= production
 
 YARN_FLAGS ?= --no-emoji --no-progress
 ESLINT_FLAGS ?= --no-ignore --color
-BABEL_FLAGS ?= -D
+BABEL_FLAGS ?= -D --ignore '*.test.js'
 
 PUBLIC_DIR ?= dist
 
