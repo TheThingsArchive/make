@@ -22,11 +22,15 @@ log_error ?= $(log_bold)$(log_red)
 log_warn ?= $(log_bold)$(log_yellow)
 log_meta ?= $(log_black)
 
-ECHO = @echo -e
+ECHO = echo -e
 
-log = $(ECHO) "$(log_color)$(LOG_NAME)$(log_clear) "
-err = $(ECHO) "$(log_error)$(LOG_NAME)$(log_clear) "
-warn = $(ECHO) "$(log_warn)$(LOG_NAME)$(log_clear) "
+log = @$(logi)
+err = @$(erri)
+warn = @$(warni)
+
+logi = $(ECHO) "$(log_color)$(LOG_NAME)$(log_clear) "
+erri = $(ECHO) "$(log_error)$(LOG_NAME)$(log_clear) "
+warni = $(ECHO) "$(log_warn)$(LOG_NAME)$(log_clear) "
 
 meta = printf "$(log_meta)[ %s ]$(log_clear)\n"
 
