@@ -6,14 +6,14 @@ HEADER ?= "// Copyright © 2017 The Things Industries B.V."
 GO_LINT_FILES ?= echo
 GO_LINT_STAGED_FILES ?= echo
 
-JS_FILES ?= echo
-JS_STAGED_FILES ?= echo
+JS_LINT_FILES ?= echo
+JS_LINT_STAGED_FILES ?= echo
 
 no_blanks = sed '/^$$/d'
 
 ## THe files to check for a header
-HEADER_FILES ?= { $(GO_LINT_FILES) ; $(JS_FILES); } | $(no_blanks)
-HEADER_STAGED_FILES ?= { $(GO_LINT_STAGED_FILES) ; $(JS_STAGED_FILES); } | $(no_blanks)
+HEADER_FILES ?= { $(GO_LINT_FILES) ; $(JS_LINT_FILES); } | $(no_blanks)
+HEADER_STAGED_FILES ?= { $(GO_LINT_STAGED_FILES) ; $(JS_LINT_STAGED_FILES); } | $(no_blanks)
 
 ## The number of lines in the header
 HEADER_LINES = echo -e $(HEADER) | wc -l

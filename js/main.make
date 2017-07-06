@@ -36,6 +36,9 @@ VERSION = cat package.json | $(JSON) version
 ## select only js files
 only_js = grep '\.js$$'
 
+## ignore proto files
+no_pb = grep -v '_pb\.js$$'
+
 # Rules
 
 ## install dev dependencies
