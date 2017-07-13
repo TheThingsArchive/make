@@ -24,13 +24,9 @@ log_meta ?= $(log_black)
 
 ECHO = echo -e
 
-log = @$(logi)
-err = @$(erri)
-warn = @$(warni)
-
-logi = $(ECHO) "$(log_color)$(LOG_NAME)$(log_clear) "
-erri = $(ECHO) "$(log_error)$(LOG_NAME)$(log_clear) "
-warni = $(ECHO) "$(log_warn)$(LOG_NAME)$(log_clear) "
+log = $(ECHO) "$(log_color)$(LOG_NAME)$(log_clear) "
+err = $(ECHO) "$(log_error)$(LOG_NAME)$(log_clear) "
+warn = $(ECHO) "$(log_warn)$(LOG_NAME)$(log_clear) "
 
 meta = printf "$(log_meta)[ %s ]$(log_clear)\n"
 

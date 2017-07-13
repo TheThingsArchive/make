@@ -41,7 +41,7 @@ endif
 license-key: $(LICENSE_KEY_FILENAME)
 
 $(LICENSE_KEY_FILENAME):
-	$(log) "fetching license key from $(LICENSE_KEY_URL)"
+	@$(log) "fetching license key from $(LICENSE_KEY_URL)"
 	@mkdir -p $(CACHE_DIR)
 	@curl -fsSL $(LICENSE_KEY_URL) > $(LICENSE_KEY_FILENAME)
 

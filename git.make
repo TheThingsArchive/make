@@ -18,14 +18,14 @@ STAGED_FILES = git diff --staged --name-only --diff-filter=d --relative=$$($(GIT
 
 # Install git hooks
 git.hooks:
-	$(log) "installing git hooks"
+	@$(log) "installing git hooks"
 	@touch .git/hooks/pre-commit
 	@chmod u+x .git/hooks/pre-commit
 	@grep pre-commit .git/hooks/pre-commit >/dev/null || echo "make pre-commit" >> .git/hooks/pre-commit
 
 # noop does nothing
 _noop:
-	$(warn) "Warning: no pre-commit hooks set, add them by overriding PRE_COMMIT in your makefile"
+	@$(warn) "Warning: no pre-commit hooks set, add them by overriding PRE_COMMIT in your makefile"
 
 # Change this to add more pre commit targets
 PRE_COMMIT ?= _noop

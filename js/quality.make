@@ -8,7 +8,7 @@ JS_LINT_STAGED_FILES = ?= $(JS_STAGED_FILES) | $(no_pb)
 
 ## lint all js files
 js.lint:
-	$(log) "linting `$(JS_LINT_FILES) | $(count)` js files"
+	@$(log) "linting `$(JS_LINT_FILES) | $(count)` js files"
 	@set -o pipefail; ($(JS_LINT_FILES) || exit 0) | xargs $(ESLINT) $(ESLINT_FLAGS) | sed 's:$(PWD)/::'
 
 ## lint staged js files
@@ -23,7 +23,7 @@ js.quality-staged: js.lint-staged
 
 ## test all js files
 js.test:
-	$(log) "testing `$(JS_TESTS) | $(count)` js files"
+	@$(log) "testing `$(JS_TESTS) | $(count)` js files"
 	@$(JEST) `$(JS_TESTS)`
 
 # vim: ft=make

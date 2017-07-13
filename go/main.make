@@ -79,35 +79,35 @@ TEST_PACKAGES = $(GO_FILES) | $(no_vendor) | $(only_test) | $(to_packages)
 
 ## get tools required for development
 go.dev-deps:
-	$(log) "fetching go tools"
+	@$(log) "fetching go tools"
 	@$(log) Installing govendor && $(GO) get -u github.com/kardianos/govendor
 	@$(log) Installing golint && $(GO) get -u github.com/golang/lint/golint
 
 ## install dependencies
 go.deps:
-	$(log) "fetching go dependencies"
+	@$(log) "fetching go dependencies"
 	@govendor sync -v
 
 ## install packages for faster rebuilds
 go.install:
-	$(log) "installing `$(EXTERNAL_PACKAGES) | $(count)` go packages"
+	@$(log) "installing `$(EXTERNAL_PACKAGES) | $(count)` go packages"
 	@$(EXTERNAL_PACKAGES) | xargs $(GO) install -v
 
 ## pre-build local files, ignoring failures (from unused packages or files for example)
 ## use this to improve build speed
 go.pre:
-	$(log) "installing go packages"
+	@$(log) "installing go packages"
 	@$(GO_FILES) | $(to_packages) | xargs $(GO) install -v || true
 
 
 ## clean build files
 go.clean:
-	$(log) "cleaning release dir" [rm -rf $(RELEASE_DIR)]
+	@$(log) "cleaning release dir" [rm -rf $(RELEASE_DIR)]
 	@rm -rf $(RELEASE_DIR)
 
 ## run tests
 go.test:
-	$(log) testing `$(TEST_PACKAGES) | $(count)` go packages
+	@$(log) testing `$(TEST_PACKAGES) | $(count)` go packages
 	@$(GO) test $(GO_TEST_FLAGS) `$(TEST_PACKAGES)`
 
 ## clean cover files
@@ -117,7 +117,7 @@ go.cover.clean:
 ## package coverage
 $(GO_COVER_DIR)/%.out: GO_TEST_FLAGS=-cover -coverprofile="$(GO_COVER_FILE)"
 $(GO_COVER_DIR)/%.out: %
-	$(log) "testing $<"
+	@$(log) "testing $<"
 	@mkdir -p `dirname "$(GO_COVER_DIR)/$<"`
 	@$(GO) test -cover -coverprofile="$@" "./$<"
 
@@ -136,7 +136,7 @@ go.list-staged: go.list
 
 # init initializes go
 go.init:
-	$(log) "initializing go"
+	@$(log) "initializing go"
 	@govendor init
 
 INIT_RULES += go.init

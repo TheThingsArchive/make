@@ -20,11 +20,11 @@ HEADER_LINES = echo -e $(HEADER) | wc -l
 
 ## Check files to see if they have the required header
 headers.check:
-	$(log) checking headers in `echo $$($(HEADER_FILES)) | $(count)` files
+	@$(log) checking headers in `echo $$($(HEADER_FILES)) | $(count)` files
 	@CODE=0; for file in `$(HEADER_FILES)`; do [[ "`head -n $$($(HEADER_LINES)) $$file`" = "`echo -e $(HEADER)`" ]] || { $(erri) "incorrect or missing header in $$file"; CODE=1; }; done; exit $$CODE
 
 headers.fix:
-	$(log) fixing headers in `echo $$($(HEADER_FILES)) | $(count)` files
+	@$(log) fixing headers in `echo $$($(HEADER_FILES)) | $(count)` files
 	@for file in `$(HEADER_FILES)`; do [[ "`head -n $$($(HEADER_LINES)) $$file`" = "`echo -e $(HEADER)`" ]] || { { echo -e $(HEADER) ; echo ; cat "$$file"; } > file.new && mv file.new "$$file"; } ; done
 
 ## Check staged files
