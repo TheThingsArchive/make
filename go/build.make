@@ -13,7 +13,7 @@ VENDOR_DIR ?= ./vendor
 
 # Build the executable
 $(RELEASE_DIR)/$(NAME)-%: $(shell $(GO_FILES)) $(VENDOR_DIR)/vendor.json
-	$(log) "building" [$(GO_ENV) GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO_ENV) $(GO) build $(GO_FLAGS) ...]
+	$(log) "building" [$(GO_ENV) GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build $(GO_FLAGS) ...]
 	@$(GO_ENV) GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build -o "$(RELEASE_DIR)/$(NAME)-$(GOOS)-$(GOARCH)" -v $(GO_FLAGS) $(LD_FLAGS) $(MAIN)
 
 # Build the executable in dev mode (much faster)
