@@ -80,8 +80,8 @@ TEST_PACKAGES = $(GO_FILES) | $(no_vendor) | $(only_test) | $(to_packages)
 ## get tools required for development
 go.dev-deps:
 	$(log) "fetching go tools"
-	@command -v govendor > /dev/null || ($(log) Installing govendor && $(GO) get -u github.com/kardianos/govendor)
-	@command -v golint > /dev/null || ($(log) Installing golint && $(GO) get -u github.com/golang/lint/golint)
+	@$(log) Installing govendor && $(GO) get -u github.com/kardianos/govendor
+	@$(log) Installing golint && $(GO) get -u github.com/golang/lint/golint
 
 ## install dependencies
 go.deps:
