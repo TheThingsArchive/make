@@ -43,7 +43,7 @@ go.lint-staged: go.lint
 # Coveralls
 
 go.cover.dev-deps:
-	@command -v goveralls > /dev/null || go get github.com/mattn/goveralls
+	@go get -u github.com/mattn/goveralls
 
 coveralls: go.cover.dev-deps $(GO_COVER_FILE)
 	goveralls -coverprofile=$(GO_COVER_FILE) -service=travis-ci -repotoken $$COVERALLS_TOKEN

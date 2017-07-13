@@ -44,8 +44,8 @@ protos-clean:
 # fetch deps for protos
 protos-deps:
 	$(log) "fetching proto tools"
-	@command -v protoc-gen-gofast > /dev/null || go get "github.com/gogo/protobuf/protoc-gen-gofast"
-	@command -v protoc-gen-grpc-gateway > /dev/null || go get "github.com/gogo/protobuf/protoc-gen-grpc-gateway"
+	@go get -u "github.com/gogo/protobuf/protoc-gen-gofast"
+	@go get -u "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway"
 
 # alias commands
 proto: protos
