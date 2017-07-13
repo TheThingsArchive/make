@@ -12,8 +12,8 @@ a: NAME = $(A_NAME)
 a: MAIN = $(A_MAIN)
 a: go.build
 
-a-dev: NAME = $(CTL_NAME)
-a-dev: MAIN = $(CTL_MAIN)
+a-dev: NAME = $(A_NAME)
+a-dev: MAIN = $(A_MAIN)
 a-dev: go.link-dev
 
 # Program B
@@ -24,8 +24,8 @@ b: NAME = $(B_NAME)
 b: MAIN = $(B_MAIN)
 b: go.build
 
-b-dev: NAME = $(CTL_NAME)
-b-dev: MAIN = $(CTL_MAIN)
+b-dev: NAME = $(B_NAME)
+b-dev: MAIN = $(B_MAIN)
 b-dev: go.link-dev
 
 # vim: ft=make
