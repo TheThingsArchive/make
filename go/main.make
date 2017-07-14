@@ -55,7 +55,7 @@ only_test = grep '_test\.go$$'
 to_packages = sed 's:/[^/]*$$::' | sort | uniq
 
 ## make packages local (prefix with ./)
-to_local = sed 's:^:\./:' | sed 's:^\./main\.go$$:.:'
+to_local = sed 's:^:\./:' | sed 's:^\./.*\.go$$:.:'
 
 
 # Selectors
