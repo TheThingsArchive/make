@@ -2,7 +2,7 @@
 .PHONY: js.quality js.quality-staged js.lint js.lint-staged
 
 JS_LINT_FILES ?= $(JS_FILES) | $(no_pb)
-JS_LINT_STAGED_FILES = ?= $(JS_STAGED_FILES) | $(no_pb)
+JS_LINT_STAGED_FILES ?= $(JS_STAGED_FILES) | $(no_pb)
 
 # Lint
 
