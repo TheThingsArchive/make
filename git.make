@@ -10,8 +10,11 @@ BUILD_DATE = `date -u +%Y-%m-%dT%H:%M%SZ`
 
 GIT_RELATIVE_DIR=git rev-parse --show-prefix
 
+only_existing = (xargs ls -d 2>/dev/null || true)
+dot_prefixed = sed 's:^:./:'
+
 # All files that are not ignored by git
-ALL_FILES ?= (git ls-files . && git ls-files . --exclude-standard --others) | sed 's:^:./:' | (xargs stat -c'%n' 2>/dev/null || true)
+ALL_FILES ?= (git ls-files . && git ls-files . --exclude-standard --others) | $(only_existing) | $(dot_prefixed)
 
 # Get all files that are currently staged, except for deleted files
 STAGED_FILES = git diff --staged --name-only --diff-filter=d --relative=$$($(GIT_RELATIVE_DIR))
