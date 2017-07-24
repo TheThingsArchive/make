@@ -11,10 +11,13 @@ MAIN ?= ./main.go
 # default vendor folder
 VENDOR_DIR ?= ./vendor
 
+LAZY_GOOS=`echo $@ | sed 's:$(RELEASE_DIR)/$(NAME)-::' | sed 's:-.*::'`
+LAZY_GOARCH=`echo $@ | sed 's:$(RELEASE_DIR)/$(NAME)-::' | sed 's:.*-::'`
+
 # Build the executable
 $(RELEASE_DIR)/$(NAME)-%: $(shell $(GO_FILES)) $(VENDOR_DIR)/vendor.json
 	@$(log) "building" [$(GO_ENV) GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build $(GO_FLAGS) ...]
-	@$(GO_ENV) GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build -o "$(RELEASE_DIR)/$(NAME)-$(GOOS)-$(GOARCH)" -v $(GO_FLAGS) $(LD_FLAGS) $(MAIN)
+	$(GO_ENV) GOOS=$(LAZY_GOOS) GOARCH=$(LAZY_GOARCH) $(GO) build -o "$(RELEASE_DIR)/$(NAME)-$(LAZY_GOOS)-$(LAZY_GOARCH)" -v $(GO_FLAGS) $(LD_FLAGS) $(MAIN)
 
 # Build the executable in dev mode (much faster)
 go.dev: GO_FLAGS =
