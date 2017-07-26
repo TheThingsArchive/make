@@ -15,4 +15,8 @@ INIT_RULES ?= git.hooks
 init:
 	@make $(INIT_RULES)
 
+internal.update:
+  @$(log) "updating make plugins..."
+  @git subtree pull --prefix .make https://github.com/TheThingsIndustries/make.git master --squash
+
 # vim: ft=make
