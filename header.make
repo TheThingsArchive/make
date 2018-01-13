@@ -1,6 +1,6 @@
 
 ## The header to check for
-HEADER ?= "// Copyright © 2017 The Things Industries B.V."
+HEADER ?= "// Copyright © 2018 The Things Industries B.V."
 
 # fallbacks
 GO_LINT_FILES ?= echo
